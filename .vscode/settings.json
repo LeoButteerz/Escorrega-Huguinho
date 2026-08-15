@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "UNICAP3D.slnx"
+    "dotnet.defaultSolution": "EscorregaHuguinho.slnx"
 }
