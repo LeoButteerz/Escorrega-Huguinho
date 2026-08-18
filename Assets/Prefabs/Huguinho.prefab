@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 4722037546794895310}
   - component: {fileID: 578822742987087770}
   - component: {fileID: 5638906176381501307}
-  - component: {fileID: 5159817919211591977}
+  - component: {fileID: 2909937555762134295}
   m_Layer: 0
   m_Name: Huguinho
   m_TagString: Untagged
@@ -277,9 +277,9 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 116
   m_CollisionDetection: 0
---- !u!114 &5159817919211591977
+--- !u!114 &2909937555762134295
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -293,5 +293,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HuguinhoController
   speed: 5
   grid_size: 1
+  obstacle_layer:
+    serializedVersion: 2
+    m_Bits: 128
+  ground_layer:
+    serializedVersion: 2
+    m_Bits: 64
+  is_sliding: 0
   cooldown: 0.5
-  timer: 0
