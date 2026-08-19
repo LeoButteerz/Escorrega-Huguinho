@@ -64,13 +64,15 @@ public class HuguinhoController : MonoBehaviour
         {
             Vector3 target_position = current_position + (end_position * grid_size);
 
+            //checa se existe um obstáculo na direção do movimento
             if(IsObstacleInDirection(target_position))
             {
                 was_stopped = true;
                 break;
             }
 
-            if (IsWin(target_position))
+            //checa se huguinho chegou em Oto
+            if (IsWin(end_position))
             {
                 Debug.Log("win");
                 break;
@@ -85,6 +87,7 @@ public class HuguinhoController : MonoBehaviour
             }
         }
 
+        //se o movimento foi interrompido por um obstáculo, espera o cooldown de 0.5s
         if (was_stopped)
         {
             yield return new WaitForSeconds(cooldown);
@@ -115,15 +118,16 @@ public class HuguinhoController : MonoBehaviour
         );
     }
 
+    //usa checksphere para verificar se existe uma caixa de colisão na direção do movimento
     private bool IsObstacleInDirection(Vector3 target_position)
     {
-        // Check a sphere centered inside the target tile
         Vector3 tileCenter = target_position + Vector3.up * 0.5f;
         
-        // 0.4f radius covers the center of a 1x1 tile without touching adjacent tiles
+        // 0.4f para não encostar acidentalmente em outros cubos
         return Physics.CheckSphere(tileCenter, grid_size * 0.4f, obstacle_layer);
     }
 
+    //usa raycast para verificar se huguinho está em cima de gelo
     private bool IsOnIce(Vector3 position)
     {
         Vector3 origin = position + Vector3.up * 0.5f;
@@ -136,12 +140,12 @@ public class HuguinhoController : MonoBehaviour
         return false;
     }
 
-    private bool IsWin(Vector3 target_position)
+    //usa raycast para verificar se huguinho encostou em Oto
+    private bool IsWin(Vector3 direction)
     {
         Vector3 origin = current_position + Vector3.up * 0.5f;
-        Vector3 dir = (target_position - current_position).normalized;
 
-        if (Physics.Raycast(origin, dir, out RaycastHit hit, grid_size))
+        if (Physics.Raycast(origin, direction, out RaycastHit hit, 1f))
         {
             return hit.collider.CompareTag("Oto");
         }

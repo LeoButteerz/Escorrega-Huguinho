@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2696375881754817511}
   - component: {fileID: 6576112652178705712}
   - component: {fileID: 8257764387831816010}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Oto
   m_TagString: Oto
   m_Icon: {fileID: 0}
