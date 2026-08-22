@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject nextLevel;
+    public GameObject replay;
+
     public void StartLevel(int levelIndex)
     {
         string levelName = "Level" + levelIndex;
@@ -12,5 +15,20 @@ public class GameManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void WinMenu()
+    {
+        nextLevel.SetActive(true);
+    }
+
+    public void LoseMenu()
+    {
+        replay.SetActive(true);
+    }
+
+    public void MainMenu()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
     }
 }

@@ -18,10 +18,13 @@ public class HuguinhoController : MonoBehaviour
 
     [Header("Cooldown Configs")]
     public float cooldown = 0.5f;
+    
+    private GameManager game_manager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (game_manager == null) game_manager = FindAnyObjectByType<GameManager>();
         //Faz com que Huguinho comece alinhado na grid
         current_position = SnapToGrid(transform.position);
         transform.position = current_position;
@@ -74,7 +77,7 @@ public class HuguinhoController : MonoBehaviour
             //checa se huguinho chegou em Oto
             if (IsWin(end_position))
             {
-                Debug.Log("win");
+                game_manager.WinMenu();
                 break;
             }
 
